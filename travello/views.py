@@ -6,7 +6,14 @@ from . models import destination
 def index(request):
     dests = destination.objects.all()
     #.map( lambda x: x.save())
-
+    dests = [ {
+        'name': d.name,
+        'img': d.img.url,
+        'desc': d.desc,
+        'price': d.price,
+        'offer': d.offer
+    } for d in dests ] 
+    print(dests)
     return render(request,'index.html',{'dests' : dests})
 
 def about(request):

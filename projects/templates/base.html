@@ -27,7 +27,7 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="/index/">Travello</a></div>
+							<div class="logo"><a href="/">Travello</a></div>
 							<nav class="main_nav">
                                 {% block header-section %}
    
@@ -62,16 +62,25 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="/index/">Travello</a></div>
+			<div class="menu_logo"><a href="/">Travello</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="/index/">Home</a></li>
+				<li><a href="/">Home</a></li>
 				<li><a href="/about/">About us</a></li>
-				<li><a href="#">Services</a></li>
 				<li><a href="/news/">News</a></li>
 				<li><a href="/contact/">Contact</a></li>
+
+				{% if user.is_authenticated %}
+				<li>Hello, {{user.first_name}}</li>
+				<li><a href="accounts/logout">Sign In</a></li>
+				
+
+				{% else %}
+				<li><a href="accounts/login">Sign In</a></li>
+				<li><a href="accounts/register">Register</a></li>
+				{% endif %}
 			</ul>
 		</div>
 		<div class="menu_social">
